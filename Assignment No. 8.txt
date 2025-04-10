@@ -1,0 +1,6 @@
+REGISTER /home/cloudera/Ass8Demo.jar
+DEFINE ConcatStrings ConcatStrings();
+data = LOAD ‘/home/cloudera/strdata.txt’ Using
+PigStorage(‘,’) AS (str1:chararray,str2:chararray);
+result = FOREACH data GENERATE ConcatStrings(str1,str2);
+DUMP result;
