@@ -1,0 +1,7 @@
+REGISTER /home/cloudera/PigAss7.jar
+DEFINE toupper PigUDF();
+
+usa = LOAD ‘/home/cloudera/cust_us.txt’ Using PigStorage(‘,’)
+AS (user:chararray,city:chararray,score:int);
+usa_upper = FOREACH usa GENERATE toupper(user,city,score);
+DUMP usa_upper;
